@@ -1,0 +1,184 @@
+/* 시니어이음 법적 고지 페이지 공통 스타일
+   판정 기준: 시니어 이용자가 휴대전화에서 읽는다 — 글자를 크게, 대비를 높게, 표는 가로 스크롤. */
+
+:root {
+  --bg: #ffffff;
+  --fg: #1a1a1a;
+  --muted: #4a4a4a;
+  --line: #d8d8d8;
+  --accent: #1b5e9c;
+  --accent-bg: #eef4fa;
+  --warn-bg: #fff4e5;
+  --warn-line: #e0a24a;
+  --max: 44rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181c;
+    --fg: #e9e9ea;
+    --muted: #b3b5ba;
+    --line: #33363d;
+    --accent: #7fb4e8;
+    --accent-bg: #1d2733;
+    --warn-bg: #2e2415;
+    --warn-line: #8a6a2f;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 1.5rem 1.25rem 5rem;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Malgun Gothic", "맑은 고딕", "Noto Sans KR", sans-serif;
+  /* 시니어 기준: 본문 18px 이상 · 줄간격 1.85 */
+  font-size: 18px;
+  line-height: 1.85;
+  word-break: keep-all;      /* 한글 단어 중간에서 안 끊기게 */
+  overflow-wrap: break-word;
+}
+
+main { max-width: var(--max); margin: 0 auto; }
+
+h1 {
+  font-size: 1.75rem;
+  line-height: 1.4;
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid var(--accent);
+}
+
+h2 {
+  font-size: 1.3rem;
+  line-height: 1.5;
+  margin: 2.75rem 0 0.9rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--line);
+}
+
+h3 {
+  font-size: 1.1rem;
+  margin: 1.9rem 0 0.6rem;
+  color: var(--accent);
+}
+
+p, li { margin: 0.7rem 0; }
+ul, ol { padding-left: 1.4rem; }
+li { margin: 0.55rem 0; }
+
+strong { font-weight: 700; }
+
+a {
+  color: var(--accent);
+  text-underline-offset: 3px;
+}
+
+/* 표 — 좁은 화면에서 본문을 밀지 않도록 자기 안에서만 가로 스크롤 */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.1rem 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 22rem;
+  font-size: 0.95rem;
+}
+
+th, td {
+  border-bottom: 1px solid var(--line);
+  padding: 0.7rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: var(--accent-bg);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+tbody tr:last-child th,
+tbody tr:last-child td { border-bottom: none; }
+
+/* 강조 상자 */
+.note {
+  background: var(--accent-bg);
+  border-left: 4px solid var(--accent);
+  padding: 0.9rem 1.1rem;
+  margin: 1.3rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.callout {
+  background: var(--warn-bg);
+  border-left: 4px solid var(--warn-line);
+  padding: 0.9rem 1.1rem;
+  margin: 1.3rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+/* 🔴 게시 전에 반드시 채워야 하는 자리 — 남아 있으면 눈에 띄어야 한다 */
+.blank {
+  background: #ffe08a;
+  color: #5a3d00;
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+  font-weight: 700;
+  border: 1px dashed #b8860b;
+}
+
+.updated {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* 목차(index) */
+.doc-list { list-style: none; padding: 0; margin: 2rem 0 0; }
+.doc-list li { margin: 0 0 1rem; }
+.doc-list a {
+  display: block;
+  padding: 1.1rem 1.25rem;
+  border: 2px solid var(--line);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--fg);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+.doc-list a:hover, .doc-list a:focus {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+}
+.doc-list .desc {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+@media print {
+  body { font-size: 11pt; padding: 0; }
+  .back, .doc-list { display: none; }
+  .table-wrap { overflow: visible; border: none; }
+}
