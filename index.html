@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>시니어이음 — 가볼 곳을 찾고 모임을 열어 함께 가요</title>
 <meta name="description" content="시니어이음은 가까운 가볼 곳과 축제를 찾고, 그곳에 모임을 열어 함께 가는 앱이에요. 걷기 운동을 챙기고, 위급할 때는 소중한 분에게 알려요.">
-<meta name="theme-color" content="#175019">
+<meta name="theme-color" content="#f9f9f9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:title" content="시니어이음">
 <meta property="og:description" content="가볼 곳을 찾고 모임을 열어 함께 가요.">
@@ -25,9 +26,6 @@
     </symbol>
     <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/>
-    </symbol>
-    <symbol id="i-badge-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m16 9-5.5 5.5L8 12"/>
     </symbol>
     <symbol id="i-footprints" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"/><path d="M16 17h4"/><path d="M4 13h4"/>
@@ -64,175 +62,149 @@
 
 <header class="top">
   <div class="wrap">
-    <img src="assets/icon-192.png" alt="" width="44" height="44">
+    <img src="assets/icon-192.png" alt="" width="36" height="36">
     <span class="name">시니어이음</span>
   </div>
 </header>
 
 <main>
 
-<!-- 첫 화면 — 제목과 세 칸(내 주변·모임·안심)은 앱 원문, 소개 둘째 문장과 걷기 운동 칸은 앱 기능을 요약한 말이다 -->
+<!-- 첫 화면 — 제목은 앱 첫 화면 원문(home_screen.dart), 소개 한 문장은 시작 안내 원문 둘을 이은 말 -->
 <section class="hero">
   <div class="wrap">
     <div>
-      <p class="brand">시니어이음 앱</p>
-      <h1>가볼 곳을 찾고<br>모임을 열어 함께 가요.</h1>
-      <p class="lead">가까운 가볼 곳과 축제를 찾고, 그곳에 모임을 열어 함께 가는 앱이에요.
-        걷기 운동을 챙기고, 위급할 때는 소중한 분에게 알려요.</p>
-      <ul class="four">
-        <li><span class="ico"><svg aria-hidden="true"><use href="#i-map"/></svg></span>
-          <span><strong>내 주변</strong><span class="t">가까운 가볼 곳과 축제를 찾아요.</span></span></li>
-        <li><span class="ico"><svg aria-hidden="true"><use href="#i-users"/></svg></span>
-          <span><strong>모임</strong><span class="t">그곳에 모임을 열고 함께 가요.</span></span></li>
-        <li><span class="ico urgent"><svg aria-hidden="true"><use href="#i-siren"/></svg></span>
-          <span><strong>안심</strong><span class="t">위급할 때 소중한 분에게 알려요.</span></span></li>
-        <li><span class="ico"><svg aria-hidden="true"><use href="#i-footprints"/></svg></span>
-          <span><strong>걷기 운동</strong><span class="t">산책을 재고 걸을 길을 골라요.</span></span></li>
-      </ul>
+      <h1>가볼 곳을 찾고<br>모임을 열어<br>함께 가요.</h1>
+      <p class="lead">가까운 가볼 곳과 축제를 찾고, 그곳에 모임을 열어 함께 가는 앱이에요.</p>
     </div>
-    <figure class="shot">
+    <figure class="phone">
       <img src="assets/screens/welcome.png" width="720" height="1435"
         alt="앱 시작 안내 화면. 「이렇게 쓰면 돼요. 네 가지만 알아두시면 충분해요.」 아래에 내 주변, 모임, 안심, 글자 크기가 차례로 적혀 있다.">
-      <figcaption>앱을 처음 열면 보이는 안내</figcaption>
     </figure>
   </div>
 </section>
 
-<!-- 묶음 1 — 앱 홈 「어디를 갈지 찾아보세요」 -->
-<section class="group tinted" aria-labelledby="g-outing">
+<!-- 내 주변 — 앱 화면 사진이 없는 자리라 지도 그림을 지어 그리지 않고, 홈 타일의 네 낱말을 크게 쓴다 -->
+<section class="feature tone" aria-labelledby="s-near">
   <div class="wrap">
-    <h2 id="g-outing">어디를 갈지 찾아보세요</h2>
-
-    <article class="feature text-only">
-      <div>
-        <h3><span class="ico"><svg aria-hidden="true"><use href="#i-map"/></svg></span>내 주변</h3>
-        <p class="summary">가까운 가볼 곳과 축제를 찾아요.</p>
-        <ul class="points">
-          <li>가볼 곳 · 축제 · 쉼터 · 병원을 지도와 목록으로 봐요.</li>
-          <li>마음에 드는 곳은 「찜하기」로 담아 둬요.</li>
-          <li>그곳에 도착하면 「도장 찍기」를 눌러요.</li>
-          <li>「친구·가족에게 보내기」로 그곳을 알려요.</li>
-          <li>그곳에 열린 모임이 있으면 바로 볼 수 있어요.</li>
-        </ul>
-      </div>
-    </article>
-
-    <article class="feature">
-      <div>
-        <h3><span class="ico"><svg aria-hidden="true"><use href="#i-users"/></svg></span>모임</h3>
-        <p class="summary">그곳에 모임을 열고 함께 가요.</p>
-        <ul class="points">
-          <li>「모임 만들기」에서 만날 장소를 정해 모임을 열어요. 함께 갈 곳도 고를 수 있어요.</li>
-          <li>모임마다 대화방이 있어 함께 이야기를 나눠요.</li>
-          <li>만날 시각이 다가오면 「같이 걷기 시작」을 누를 수 있어요 — 모이면 서로 위치가 보여요.</li>
-        </ul>
-      </div>
-      <figure class="shot">
-        <img src="assets/screens/gathering.png" width="720" height="1433" loading="lazy"
-          alt="모임 대화방 화면. 위에 「모이면 함께 걸어요, 서로 위치가 보여요」 카드와 「같이 걷기 시작」 단추가 있고, 아래에 모임 사람들이 나눈 말이 보인다.">
-        <figcaption>모임 대화방</figcaption>
-      </figure>
-    </article>
-
-    <article class="feature flip">
-      <div>
-        <h3><span class="ico"><svg aria-hidden="true"><use href="#i-badge-check"/></svg></span>내 기록</h3>
-        <p class="summary">담아 둔 곳과 다녀온 곳을 모아 봐요.</p>
-        <ul class="points">
-          <li>「내 찜 목록」 — 나중에 가려고 담아 둔 곳</li>
-          <li>「내 도장」 — 다녀와서 받은 도장</li>
-          <li>「내 완주 인증」 — 끝까지 걸은 코스</li>
-        </ul>
-      </div>
-      <figure class="shot">
-        <img src="assets/screens/records.png" width="720" height="819" loading="lazy"
-          alt="내 기록 화면. 내 찜 목록, 내 도장, 내 완주 인증 세 칸이 있다.">
-        <figcaption>내 기록</figcaption>
-      </figure>
-    </article>
-  </div>
-</section>
-
-<!-- 묶음 2 — 앱 홈 「건강을 챙겨 보세요」 -->
-<section class="group" aria-labelledby="g-health">
-  <div class="wrap">
-    <h2 id="g-health">건강을 챙겨 보세요</h2>
-
-    <article class="feature">
-      <div>
-        <h3><span class="ico"><svg aria-hidden="true"><use href="#i-footprints"/></svg></span>걷기 운동</h3>
-        <p class="summary">산책을 재고 걸을 길을 골라요.</p>
-        <ul class="points">
-          <li>「산책 시작하기」를 누르면 걸은 시간과 거리를 재요.</li>
-          <li>「내 산책」에서 오늘과 최근 7일을 한눈에 봐요.</li>
-          <li>「오늘 외출」에서 날씨를 보고 나서요.</li>
-          <li>「추천 코스」를 보고, 「걷기 코스 모두 보기」에서 걸을 길을 골라요. 코스마다 정한 만큼 걸으면 완주 인증을 받을 수 있어요.</li>
-          <li>「주변 안전」에서 주변 병원과 약국이 몇 곳인지 알려 줘요.</li>
-        </ul>
-      </div>
-      <figure class="shot">
-        <img src="assets/screens/walk.png" width="720" height="1440" loading="lazy"
-          alt="걷기 운동 화면. 「산책 시작하기」 단추 아래에 내 산책, 오늘 외출, 추천 코스, 주변 안전 칸이 있다.">
-        <figcaption>걷기 운동</figcaption>
-      </figure>
-    </article>
-
-    <article class="feature flip">
-      <div>
-        <h3><span class="ico urgent"><svg aria-hidden="true"><use href="#i-siren"/></svg></span>안심</h3>
-        <p class="summary">위급할 때 소중한 분에게 알려요.</p>
-        <ul class="points">
-          <li>「도움 요청하기」를 누르면 5초 뒤 소중한 분에게 알려요. 「위급할 때 내 위치 보내기」에 동의해 두면 위치도 함께 보내요.</li>
-          <li>「초대코드 만들기」나 「코드로 연결하기」로 소중한 분과 이어져요.</li>
-          <li>「안부 살핌」 — 앱을 열지 않으면 확인, 소중한 분, 도움 요청 차례로 알려요.</li>
-          <li>「가까운 응급실」을 보고 바로 전화할 수 있어요.</li>
-        </ul>
-      </div>
-      <figure class="shot">
-        <img src="assets/screens/care.png" width="720" height="1440" loading="lazy"
-          alt="안심 화면. 빨간 「도움 요청」 카드에 「누르면 5초 뒤 소중한 분에게 알려요」와 「도움 요청하기」 단추가 있고, 아래에 연결된 소중한 분과 초대코드 만들기, 코드로 연결하기가 있다.">
-        <figcaption>안심</figcaption>
-      </figure>
-    </article>
-  </div>
-</section>
-
-<!-- 묶음 3 — 앱 홈 「이웃과 어울려 보세요」 -->
-<section class="group tinted" aria-labelledby="g-people">
-  <div class="wrap">
-    <h2 id="g-people">이웃과 어울려 보세요</h2>
-    <ul class="cards three">
-      <li><span class="ico"><svg aria-hidden="true"><use href="#i-user-plus"/></svg></span>
-        <div><strong>친구</strong><p>초대하거나 받은 코드를 넣어 친구를 맺어요.</p></div></li>
-      <li><span class="ico"><svg aria-hidden="true"><use href="#i-message-circle"/></svg></span>
-        <div><strong>대화</strong><p>주고받은 대화를 한곳에서 봐요.</p></div></li>
-      <li><span class="ico"><svg aria-hidden="true"><use href="#i-newspaper"/></svg></span>
-        <div><strong>게시판</strong><p>글을 쓰고 이웃의 글을 읽어요.</p></div></li>
+    <div>
+      <p class="kicker"><svg aria-hidden="true"><use href="#i-map"/></svg>내 주변</p>
+      <h2 id="s-near">가까운 가볼 곳과<br>축제를 찾아요.</h2>
+      <ul class="lines">
+        <li>마음에 드는 곳은 「찜하기」로 담아 둬요.</li>
+        <li>그곳에 도착하면 「도장 찍기」를 눌러요.</li>
+        <li>「친구·가족에게 보내기」로 그곳을 알려요.</li>
+        <li>그곳에 열린 모임도 바로 <span class="nb">볼 수 있어요.</span></li>
+      </ul>
+    </div>
+    <ul class="words" aria-label="내 주변에서 찾는 것">
+      <li>가볼 곳</li>
+      <li>축제</li>
+      <li>쉼터</li>
+      <li>병원</li>
     </ul>
   </div>
 </section>
 
-<!-- 묶음 4 — 앱 홈 「혜택을 받아 보세요」 -->
-<section class="group" aria-labelledby="g-benefits">
+<section class="feature flip" aria-labelledby="s-gather">
   <div class="wrap">
-    <h2 id="g-benefits">혜택을 받아 보세요</h2>
-    <ul class="cards four-col">
-      <li><span class="ico"><svg aria-hidden="true"><use href="#i-briefcase"/></svg></span>
-        <div><strong>일자리</strong><p>공공 일자리 공고를 봐요.</p></div></li>
-      <li><span class="ico"><svg aria-hidden="true"><use href="#i-hand-coins"/></svg></span>
-        <div><strong>내 포인트</strong><p>출석, 두뇌 퀴즈, 걷기 운동으로 포인트를 모으고, 내 위치 꾸미기와 말풍선 고르기에 써요.</p></div></li>
-      <li><span class="ico"><svg aria-hidden="true"><use href="#i-shield-check"/></svg></span>
-        <div><strong>복지 혜택</strong><p>어르신 혜택을 주제와 지역으로 찾아요.</p></div></li>
-      <li><span class="ico"><svg aria-hidden="true"><use href="#i-megaphone"/></svg></span>
-        <div><strong>새 소식</strong><p>정부 정책 소식을 봐요.</p></div></li>
-    </ul>
+    <div>
+      <p class="kicker"><svg aria-hidden="true"><use href="#i-users"/></svg>모임</p>
+      <h2 id="s-gather">그곳에 모임을 열고<br>함께 가요.</h2>
+      <ul class="lines">
+        <li>「모임 만들기」에서 만날 장소를 정해 모임을 열어요. 함께 갈 곳도 <span class="nb">고를 수 있어요.</span></li>
+        <li>모임마다 대화방이 있어 함께 이야기를 나눠요.</li>
+        <li>만날 시각이 다가오면 「같이 걷기 시작」을 <span class="nb">누를 수 있어요.</span> 모이면 서로 위치가 보여요.</li>
+      </ul>
+    </div>
+    <figure class="phone">
+      <img src="assets/screens/gathering.png" width="720" height="1433" loading="lazy"
+        alt="모임 대화방 화면. 위에 「모이면 함께 걸어요, 서로 위치가 보여요」 카드와 「같이 걷기 시작」 단추가 있고, 아래에 모임 사람들이 나눈 말이 보인다.">
+    </figure>
   </div>
 </section>
 
-<section class="group tinted textsize" aria-label="글자 크기">
+<section class="feature tone" aria-labelledby="s-walk">
   <div class="wrap">
-    <span class="ico"><svg aria-hidden="true"><use href="#i-type"/></svg></span>
-    <p><strong>글자가 작게 보이면</strong>내 정보에서 글자 크기를 키울 수 있어요.</p>
+    <div>
+      <p class="kicker"><svg aria-hidden="true"><use href="#i-footprints"/></svg>걷기 운동</p>
+      <h2 id="s-walk">산책을 재고<br>걸을 길을 골라요.</h2>
+      <ul class="lines">
+        <li>「산책 시작하기」를 누르면 걸은 시간과 거리를 재요.</li>
+        <li>「오늘 외출」에서 날씨를 보고 나서요.</li>
+        <li>「걷기 코스 모두 보기」에서 걸을 길을 골라요. 코스마다 정한 만큼 걸으면 완주 인증을 <span class="nb">받을 수 있어요.</span></li>
+        <li>다녀와서 받은 도장과 완주 인증은 「내 기록」에 모여요.</li>
+      </ul>
+    </div>
+    <figure class="phone">
+      <img src="assets/screens/walk.png" width="720" height="1440" loading="lazy"
+        alt="걷기 운동 화면. 「산책 시작하기」 단추 아래에 내 산책, 오늘 외출, 추천 코스, 주변 안전 칸이 있다.">
+    </figure>
+  </div>
+</section>
+
+<section class="feature flip" aria-labelledby="s-care">
+  <div class="wrap">
+    <div>
+      <p class="kicker"><svg aria-hidden="true"><use href="#i-siren"/></svg>안심</p>
+      <h2 id="s-care">위급할 때<br>소중한 분에게 알려요.</h2>
+      <ul class="lines">
+        <li>「초대코드 만들기」나 「코드로 연결하기」로 소중한 분과 이어져요.</li>
+        <li>「도움 요청하기」를 누르면 5초 뒤 소중한 분에게 알려요. 「위급할 때 내 위치 보내기」에 동의해 두면 위치도 함께 보내요.</li>
+        <li>「안부 살핌」 — 앱을 열지 않으면 확인, 소중한 분, 도움 요청 차례로 알려요.</li>
+        <li>「가까운 응급실」을 보고 바로 <span class="nb">전화할 수 있어요.</span></li>
+      </ul>
+    </div>
+    <figure class="phone">
+      <img src="assets/screens/care.png" width="720" height="1440" loading="lazy"
+        alt="안심 화면. 빨간 「도움 요청」 카드에 「누르면 5초 뒤 소중한 분에게 알려요」와 「도움 요청하기」 단추가 있고, 아래에 연결된 소중한 분과 초대코드 만들기, 코드로 연결하기가 있다.">
+    </figure>
+  </div>
+</section>
+
+<!-- 글자 크기 — 앱 lib/core/settings/text_size.dart의 세 단계(기본 1.0 · 중간 1.5 · 크게 2.0)를 같은 배율로 보인다 -->
+<section class="stage tone" aria-labelledby="s-text">
+  <div class="wrap">
+    <p class="kicker"><svg aria-hidden="true"><use href="#i-type"/></svg>글자 크기</p>
+    <h2 id="s-text">글자는 크게<br>볼 수 있어요.</h2>
+    <p class="lead">「내 정보」의 「글자 크기」에서 기본, 중간, 크게 가운데 하나를 고르면 돼요.</p>
+    <div class="scale" aria-hidden="true">
+      <figure><span style="--f: 1">가</span><figcaption>기본</figcaption></figure>
+      <figure><span style="--f: 1.5">가</span><figcaption>중간</figcaption></figure>
+      <figure><span style="--f: 2">가</span><figcaption>크게</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 그 밖에도 — 앱 홈의 나머지 두 묶음(이름도 홈 그대로) -->
+<section class="more" aria-labelledby="s-more">
+  <div class="wrap">
+    <h2 id="s-more">그 밖에도</h2>
+    <div class="cols">
+      <div>
+        <h3>이웃과 어울려 보세요</h3>
+        <ul class="rows">
+          <li><svg aria-hidden="true"><use href="#i-user-plus"/></svg>
+            <div><strong>친구</strong><span class="t">초대하거나 받은 코드를 넣어 친구를 맺어요.</span></div></li>
+          <li><svg aria-hidden="true"><use href="#i-message-circle"/></svg>
+            <div><strong>대화</strong><span class="t">주고받은 대화를 한곳에서 봐요.</span></div></li>
+          <li><svg aria-hidden="true"><use href="#i-newspaper"/></svg>
+            <div><strong>게시판</strong><span class="t">글을 쓰고 이웃의 글을 읽어요.</span></div></li>
+        </ul>
+      </div>
+      <div>
+        <h3>혜택을 받아 보세요</h3>
+        <ul class="rows">
+          <li><svg aria-hidden="true"><use href="#i-briefcase"/></svg>
+            <div><strong>일자리</strong><span class="t">공공 일자리 공고를 봐요.</span></div></li>
+          <li><svg aria-hidden="true"><use href="#i-hand-coins"/></svg>
+            <div><strong>내 포인트</strong><span class="t"><span class="nb">출석,</span> <span class="nb">두뇌 퀴즈,</span> <span class="nb">걷기 운동으로</span> 포인트를 모으고, <span class="nb">내 위치 꾸미기와</span> <span class="nb">말풍선 고르기에</span> 써요.</span></div></li>
+          <li><svg aria-hidden="true"><use href="#i-shield-check"/></svg>
+            <div><strong>복지 혜택</strong><span class="t">어르신 혜택을 주제와 지역으로 찾아요.</span></div></li>
+          <li><svg aria-hidden="true"><use href="#i-megaphone"/></svg>
+            <div><strong>새 소식</strong><span class="t">정부 정책 소식을 봐요.</span></div></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 

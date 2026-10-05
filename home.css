@@ -1,39 +1,35 @@
 /* 시니어이음 홈페이지(앱 소개) 전용 스타일
    🔴 style.css는 법적 고지 세 쪽이 함께 쓴다 — 홈페이지 모양은 이 파일에서만 바꾼다.
-   판정 기준은 style.css 머리와 같다: 시니어 이용자가 휴대전화에서 읽는다 — 글자를 크게(본문 18px 이상),
-   대비를 높게. 색은 앱 테마(seniorhub-app lib/design/theme.dart)에서 가져왔다. */
+   방향: 무채색 바탕(#111 · #F9F9F9)에 강조색은 앱 초록 하나. 위계는 상자가 아니라 글자 크기와 여백으로 만든다.
+   시니어 기준(style.css 머리와 같다): 가장 작은 글자 18px · 글자 대비 7:1 이상 · 얇은 굵기 안 씀 · 움직임 없음. */
 
 :root {
   color-scheme: light dark;
-  --bg: #ffffff;
-  --surface: #e7eaee;      /* 앱 surface */
-  --card: #ffffff;
-  --ink: #17181a;          /* 앱 seniorPillInk */
-  --muted: #44474c;
-  --line: #d5d9de;
-  --green: #175019;        /* 앱 primary */
-  --green-tint: #e4ede8;   /* 앱 seniorTintFace — 아이콘 바탕 */
-  --red: #920f0f;          /* 앱 error — 안심 */
-  --red-tint: #fde0e0;
-  --shadow: 0 10px 30px rgba(23, 24, 26, 0.12);
-  --bezel: #17181a;
-  --max: 68rem;
+  --bg: #f9f9f9;
+  --paper: #ffffff;
+  --ink: #111111;
+  --muted: #4a4a4a;        /* #f9f9f9 위 약 8.4:1 — 연회색 본문은 쓰지 않는다 */
+  --hair: #e2e2e2;
+  --accent: #175019;       /* 앱 primary(seniorhub-app lib/design/theme.dart) — 강조색은 이것 하나 */
+  --bezel: #111111;
+  --shadow: 0 2.5rem 4rem -1.75rem rgba(17, 17, 17, 0.3);
+  --shot-filter: none;
+  --gutter: 1.5rem;
+  --max: 72rem;
+  --section: clamp(5rem, 14vw, 9rem);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #121412;
-    --surface: #1a1e1b;
-    --card: #222723;
-    --ink: #eceeec;
-    --muted: #bcc1bc;
-    --line: #353b36;
-    --green: #9fd49b;
-    --green-tint: #243528;
-    --red: #ff9b93;
-    --red-tint: #3b2020;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
-    --bezel: #3a3f45;
+    --bg: #111111;
+    --paper: #1a1a1a;
+    --ink: #f9f9f9;
+    --muted: #b8b8b8;
+    --hair: #2c2c2c;
+    --accent: #8fcb8b;     /* 같은 초록을 어두운 바탕에서 읽히게 밝힌 것 — 색은 여전히 하나 */
+    --bezel: #2e2e2e;
+    --shadow: 0 2.5rem 4rem -1.75rem rgba(0, 0, 0, 0.7);
+    --shot-filter: brightness(0.88);  /* 앱 화면은 밝은 판뿐이라 어두운 바탕에서 눈부시지 않게 */
   }
 }
 
@@ -47,214 +43,172 @@ body {
   color: var(--ink);
   font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
     "Malgun Gothic", "맑은 고딕", "Noto Sans KR", sans-serif;
-  /* 시니어 기준: 본문 18px 이상 · 줄간격 넉넉히 */
+  /* 본문 18px(기기 글자 크기 설정을 따라 커지게 rem) */
   font-size: 1.125rem;
   line-height: 1.75;
   word-break: keep-all;      /* 한글 단어 중간에서 안 끊기게 */
   overflow-wrap: break-word;
 }
 
-img { max-width: 100%; height: auto; display: block; }
+h1, h2, h3, p, ul, figure { margin: 0; }
+h1, h2 { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+img { display: block; max-width: 100%; height: auto; }
 
 .wrap {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 0 1.25rem;
+  padding: 0 var(--gutter);
 }
 
-/* 아이콘 — lucide 선 아이콘(색은 글자색을 따른다) */
-.ico {
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 3.25rem;
-  height: 3.25rem;
-  border-radius: 1rem;
-  background: var(--green-tint);
-  color: var(--green);
-}
-.ico svg { width: 1.75rem; height: 1.75rem; }
-.ico.urgent { background: var(--red-tint); color: var(--red); }
-/* 회색 바탕(묶음) 위에서는 연초록 칸이 묻힌다 — 흰 칸으로 */
-.tinted .ico:not(.urgent) { background: var(--card); }
+.nb { white-space: nowrap; }  /* 「받을 수 있어요」처럼 한 덩어리로 읽히는 말을 줄 끝에서 가르지 않는다 */
+
+.tone { background: var(--paper); }  /* 구획을 상자 없이 바탕 한 겹으로만 가른다 */
 
 /* ── 머리 ── */
-.top {
-  border-bottom: 1px solid var(--line);
-}
 .top .wrap {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  min-height: 4.5rem;
+  height: 4.5rem;
 }
-.top img { width: 2.75rem; height: 2.75rem; border-radius: 0.7rem; }
-.top .name {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--green);
-  letter-spacing: -0.01em;
-}
+.top img { width: 2.25rem; height: 2.25rem; border-radius: 0.6rem; }
+.top .name { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.01em; }
 
 /* ── 첫 화면 ── */
-.hero { padding: 2.5rem 0 3rem; }
+.hero { padding: clamp(2.5rem, 8vw, 5.5rem) 0 var(--section); }
 .hero .wrap {
   display: grid;
-  gap: 2.5rem;
+  gap: clamp(3rem, 8vw, 5rem);
   align-items: center;
 }
 .hero h1 {
-  margin: 0 0 1.25rem;
-  font-size: 2.1rem;
-  line-height: 1.35;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.5rem, 8vw, 4.75rem);
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+  font-weight: 800;
 }
-.hero .brand {
-  margin: 0 0 0.5rem;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--green);
-}
-.hero .lead {
-  margin: 0;
-  font-size: 1.2rem;
+.lead {
+  margin-top: 1.5rem;
+  max-width: 26em;
+  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+  line-height: 1.65;
   color: var(--muted);
 }
 
-.four {
-  list-style: none;
-  margin: 1.75rem 0 0;
-  padding: 0;
-  display: grid;
-  gap: 0.75rem;
-}
-.four li {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.85rem 1rem;
-  border-radius: 1.1rem;
-  background: var(--card);
-  border: 1px solid var(--line);
-}
-.four strong { display: block; font-size: 1.15rem; }
-.four span.t { display: block; color: var(--muted); }
-
-/* 화면 사진 — 휴대전화 한 장처럼 둥근 테두리 */
-.shot {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 19rem;
-}
-.shot img {
-  border-radius: 1.75rem;
-  border: 6px solid var(--bezel);
-  background: var(--surface);
+/* 화면 사진 — 휴대전화 한 대 */
+.phone { margin: 0 auto; width: min(78vw, 20rem); }
+.phone img {
+  border: 0.6rem solid var(--bezel);
+  border-radius: 2.4rem;
+  background: #e7eaee;
   box-shadow: var(--shadow);
+  filter: var(--shot-filter);
 }
-.shot figcaption {
-  margin-top: 0.9rem;
-  text-align: center;
+
+/* ── 기능 하나 = 한 구획 ── */
+.feature { padding: var(--section) 0; }
+.feature .wrap {
+  display: grid;
+  gap: clamp(3.5rem, 9vw, 6rem);
+  align-items: center;
+}
+
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 1.25rem;
+  color: var(--accent);
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+.kicker svg { flex: none; width: 1.5rem; height: 1.5rem; }
+
+.feature h2, .stage h2, .more h2 {
+  font-size: clamp(2rem, 5.6vw, 3.25rem);
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+
+.lines {
+  list-style: none;
+  margin-top: 2.25rem;
+  padding: 0;
+  max-width: 30em;
+  display: grid;
+  gap: 1.15rem;
   color: var(--muted);
 }
 
-/* ── 묶음(홈 화면의 네 묶음과 같은 순서) ── */
-.group { padding: 3.5rem 0; }
-.group.tinted { background: var(--surface); }
-.group h2 {
-  margin: 0 0 2rem;
-  font-size: 1.75rem;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
-}
-
-.feature {
-  display: grid;
-  gap: 2rem;
-  align-items: center;
-  padding: 2rem 0;
-}
-.feature + .feature { border-top: 1px solid var(--line); }
-.group h2 + .feature { padding-top: 0; }  /* 묶음 제목 바로 아래는 여백을 겹치지 않는다 */
-.feature h3 {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  margin: 0 0 0.75rem;
-  font-size: 1.5rem;
-  line-height: 1.4;
-}
-.feature .summary {
-  margin: 0 0 1rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-.points { margin: 0; padding-left: 1.3rem; }
-.points li { margin: 0.55rem 0; }
-.points li::marker { color: var(--green); }
-
-/* 작은 칸(이웃 · 혜택) */
-.cards {
+/* 내 주변 — 사진 대신 글자를 그림처럼 */
+.words {
   list-style: none;
-  margin: 0;
   padding: 0;
-  display: grid;
-  gap: 1rem;
+  font-size: clamp(2.75rem, 11vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
 }
-.cards li {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-  padding: 1.25rem;
-  border-radius: 1.25rem;
-  background: var(--card);
-  border: 1px solid var(--line);
-}
-.cards strong { display: block; font-size: 1.2rem; margin-bottom: 0.2rem; }
-.cards p { margin: 0; color: var(--muted); }
+.words li { padding: 0.3em 0; }
+.words li + li { border-top: 1px solid var(--hair); }
 
-/* 글자 크기 */
-.textsize .wrap {
+/* ── 글자 크기 — 앱의 세 단계(기본 1.0 · 중간 1.5 · 크게 2.0)를 실제 글자로 ── */
+.stage { padding: var(--section) 0; text-align: center; }
+.stage .kicker { justify-content: center; }
+.stage .lead { margin-left: auto; margin-right: auto; }
+.scale {
+  --base: 2.25rem;   /* 「기본」 한 글자의 크기 — 중간·크게는 여기에 앱과 같은 배율을 곱한다 */
   display: flex;
-  align-items: center;
-  gap: 1.1rem;
+  justify-content: center;
+  align-items: flex-end;
+  gap: clamp(2rem, 7vw, 4.5rem);
+  margin-top: clamp(3rem, 8vw, 4.5rem);
 }
-.textsize p { margin: 0; font-size: 1.2rem; }
-.textsize strong { display: block; font-size: 1.35rem; }
+.scale figure { display: grid; justify-items: center; gap: 0.75rem; }
+.scale span {
+  font-size: calc(var(--base) * var(--f));
+  font-weight: 800;
+  line-height: 1;
+}
+.scale figcaption { color: var(--muted); }
+
+/* ── 그 밖에도 ── */
+.more { padding: var(--section) 0; }
+.more .cols {
+  display: grid;
+  gap: 3rem;
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+}
+.more h3 { margin-bottom: 0.5rem; font-size: 1.25rem; font-weight: 700; }
+.rows { list-style: none; padding: 0; }
+.rows li {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  gap: 1rem;
+  padding: 1.35rem 0;
+  border-top: 1px solid var(--hair);
+}
+.rows svg { width: 1.5rem; height: 1.5rem; margin-top: 0.3rem; color: var(--accent); }
+.rows strong { display: block; font-size: 1.25rem; }
+.rows span.t { color: var(--muted); }
 
 /* ── 꼬리 ── */
-.foot {
-  padding: 2.25rem 0 3.5rem;
-  border-top: 1px solid var(--line);
-  color: var(--muted);
-}
-.foot p { margin: 0.4rem 0; }
-.nb { white-space: nowrap; }  /* 「ⓒ」와 기관 이름이 줄 끝에서 갈리지 않게 */
+.foot { padding: 3rem 0 4.5rem; border-top: 1px solid var(--hair); color: var(--muted); }
+.foot p + p { margin-top: 0.5rem; }
 
 /* ── 넓은 화면 ── */
-@media (min-width: 720px) {
-  .cards { grid-template-columns: repeat(2, 1fr); }
-}
-
 @media (min-width: 960px) {
-  .hero { padding: 4rem 0 4.5rem; }
-  .hero .wrap { grid-template-columns: 1.15fr 0.85fr; gap: 4rem; }
-  .hero h1 { font-size: 2.75rem; }
-
-  .feature { grid-template-columns: 1.1fr 0.9fr; gap: 4rem; padding: 2.5rem 0; align-items: start; }
-  .feature > div { padding-top: 1.5rem; }
-  .feature.text-only > div { padding-top: 0; }
-  /* 사진이 번갈아 왼쪽·오른쪽에 선다 */
-  .feature.flip .shot { order: -1; }
-  .feature.text-only { grid-template-columns: 1fr; }
-  .feature.text-only .points { columns: 2; column-gap: 3rem; }
-  .feature.text-only .points li { break-inside: avoid; }
-
-  .cards.three { grid-template-columns: repeat(3, 1fr); }
-  .cards.four-col { grid-template-columns: repeat(2, 1fr); }
+  .hero .wrap { grid-template-columns: 1.15fr 0.85fr; }
+  .phone { width: 21rem; }
+  .feature .wrap { grid-template-columns: 1fr 1fr; }
+  .feature.flip .wrap > :last-child { order: -1; }   /* 사진이 번갈아 왼쪽·오른쪽에 선다 */
+  .lines { font-size: 1.25rem; }
+  .scale { --base: 3rem; }
+  .more .cols { grid-template-columns: 1fr 1fr; gap: 5rem; }
 }
 
 @media print {
-  .shot img { box-shadow: none; }
+  .phone img { box-shadow: none; }
 }
