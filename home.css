@@ -62,6 +62,12 @@ img { display: block; max-width: 100%; height: auto; }
 }
 
 .nb { white-space: nowrap; }  /* 「받을 수 있어요」처럼 한 덩어리로 읽히는 말을 줄 끝에서 가르지 않는다 */
+.q { white-space: nowrap; }   /* 「내 기록」 같은 짧은 단추 이름을 가운데서 가르지 않는다 */
+/* 기기 기본 글자를 키운 사람(약 1.2배 이상)에게는 묶음을 푼다 — em 미디어 쿼리는 기본 글자 크기를 따른다.
+   기본 16px에서는 304px 이하에서만 풀려 실제 휴대전화에서는 묶인 채다. */
+@media (max-width: 19em) {
+  .nb, .q { white-space: normal; }
+}
 
 .tone { background: var(--paper); }  /* 구획을 상자 없이 바탕 한 겹으로만 가른다 */
 
@@ -101,7 +107,7 @@ img { display: block; max-width: 100%; height: auto; }
 .phone img {
   border: 0.6rem solid var(--bezel);
   border-radius: 2.4rem;
-  background: #e7eaee;
+  background: var(--paper);
   box-shadow: var(--shadow);
   filter: var(--shot-filter);
 }
@@ -159,7 +165,7 @@ img { display: block; max-width: 100%; height: auto; }
 .stage .kicker { justify-content: center; }
 .stage .lead { margin-left: auto; margin-right: auto; }
 .scale {
-  --base: 2.25rem;   /* 「기본」 한 글자의 크기 — 중간·크게는 여기에 앱과 같은 배율을 곱한다 */
+  --base: min(2.25rem, 9vw);   /* 「기본」 한 글자 — 중간·크게는 앱과 같은 배율을 곱한다 · 큰 글자 설정에서도 폭을 넘지 않게 9vw로 막는다 */
   display: flex;
   justify-content: center;
   align-items: flex-end;
