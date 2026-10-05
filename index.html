@@ -96,9 +96,10 @@
         <li>그곳에 열린 모임이 있으면 바로 <span class="nb">볼 수 있어요.</span></li>
       </ul>
     </div>
-    <!-- 지도 그림 — 앱 화면 사진이 아니라 직접 그린 그림이다. 앱 지도처럼 내 위치 점과 고른 종류의 핀만 둔다
+    <!-- 지도 그림 — 앱 화면 사진이 아니라 직접 그린 그림이다. 앱 지도처럼 내 위치 점과 고른 종류의 핀만 둔다.
+         핀은 앱 낱개 핀(map_marker.dart)처럼 물방울 모양이되 안의 그림은 그리지 않는다 — 둥근 내 위치 점과 모양으로 갈린다
          (글자 라벨은 좁은 폭·큰 글자에서 겹치고 잘려 뺐다 · 반경 원은 앱 지도에 없어 그리지 않는다) -->
-    <figure class="map" role="img" aria-label="종류를 고르면 내 위치 둘레의 그곳들이 지도 위에 뜨는 모습을 그린 그림">
+    <figure class="map" role="img" aria-label="종류를 하나 고르면 내 위치 둘레에 그 종류의 곳들이 핀으로 뜨는 모습을 그린 그림">
       <svg viewBox="0 0 400 440" aria-hidden="true" focusable="false">
         <rect class="m-bg" width="400" height="440"/>
         <rect class="m-park" x="14" y="106" width="96" height="122" rx="10"/>
@@ -108,13 +109,13 @@
           <path class="m-wide" d="M-10 420L410 170"/>
           <path class="m-lane" d="M196 236V370M268 166H400M40 300H118"/>
         </g>
-        <circle class="m-halo" cx="190" cy="230" r="26"/>
+        <circle class="m-halo" cx="190" cy="230" r="30"/>
         <circle class="m-me" cx="190" cy="230" r="10"/>
-        <circle class="m-pin" cx="112" cy="166" r="12"/>
-        <circle class="m-pin" cx="288" cy="146" r="12"/>
-        <circle class="m-pin" cx="306" cy="300" r="12"/>
-        <circle class="m-pin" cx="134" cy="322" r="12"/>
-        <circle class="m-pin" cx="232" cy="352" r="12"/>
+        <g class="m-pin" transform="translate(112 186)"><path d="M0 0C-4-7-13-11-13-20A13 13 0 1 1 13-20C13-11 4-7 0 0Z"/><circle cx="0" cy="-20" r="4.5"/></g>
+        <g class="m-pin" transform="translate(288 166)"><path d="M0 0C-4-7-13-11-13-20A13 13 0 1 1 13-20C13-11 4-7 0 0Z"/><circle cx="0" cy="-20" r="4.5"/></g>
+        <g class="m-pin" transform="translate(306 320)"><path d="M0 0C-4-7-13-11-13-20A13 13 0 1 1 13-20C13-11 4-7 0 0Z"/><circle cx="0" cy="-20" r="4.5"/></g>
+        <g class="m-pin" transform="translate(134 342)"><path d="M0 0C-4-7-13-11-13-20A13 13 0 1 1 13-20C13-11 4-7 0 0Z"/><circle cx="0" cy="-20" r="4.5"/></g>
+        <g class="m-pin" transform="translate(232 372)"><path d="M0 0C-4-7-13-11-13-20A13 13 0 1 1 13-20C13-11 4-7 0 0Z"/><circle cx="0" cy="-20" r="4.5"/></g>
       </svg>
     </figure>
   </div>
