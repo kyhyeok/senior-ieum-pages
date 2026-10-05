@@ -1,0 +1,260 @@
+/* 시니어이음 홈페이지(앱 소개) 전용 스타일
+   🔴 style.css는 법적 고지 세 쪽이 함께 쓴다 — 홈페이지 모양은 이 파일에서만 바꾼다.
+   판정 기준은 style.css 머리와 같다: 시니어 이용자가 휴대전화에서 읽는다 — 글자를 크게(본문 18px 이상),
+   대비를 높게. 색은 앱 테마(seniorhub-app lib/design/theme.dart)에서 가져왔다. */
+
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --surface: #e7eaee;      /* 앱 surface */
+  --card: #ffffff;
+  --ink: #17181a;          /* 앱 seniorPillInk */
+  --muted: #44474c;
+  --line: #d5d9de;
+  --green: #175019;        /* 앱 primary */
+  --green-tint: #e4ede8;   /* 앱 seniorTintFace — 아이콘 바탕 */
+  --red: #920f0f;          /* 앱 error — 안심 */
+  --red-tint: #fde0e0;
+  --shadow: 0 10px 30px rgba(23, 24, 26, 0.12);
+  --bezel: #17181a;
+  --max: 68rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121412;
+    --surface: #1a1e1b;
+    --card: #222723;
+    --ink: #eceeec;
+    --muted: #bcc1bc;
+    --line: #353b36;
+    --green: #9fd49b;
+    --green-tint: #243528;
+    --red: #ff9b93;
+    --red-tint: #3b2020;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    --bezel: #3a3f45;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Malgun Gothic", "맑은 고딕", "Noto Sans KR", sans-serif;
+  /* 시니어 기준: 본문 18px 이상 · 줄간격 넉넉히 */
+  font-size: 1.125rem;
+  line-height: 1.75;
+  word-break: keep-all;      /* 한글 단어 중간에서 안 끊기게 */
+  overflow-wrap: break-word;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* 아이콘 — lucide 선 아이콘(색은 글자색을 따른다) */
+.ico {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 1rem;
+  background: var(--green-tint);
+  color: var(--green);
+}
+.ico svg { width: 1.75rem; height: 1.75rem; }
+.ico.urgent { background: var(--red-tint); color: var(--red); }
+/* 회색 바탕(묶음) 위에서는 연초록 칸이 묻힌다 — 흰 칸으로 */
+.tinted .ico:not(.urgent) { background: var(--card); }
+
+/* ── 머리 ── */
+.top {
+  border-bottom: 1px solid var(--line);
+}
+.top .wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 4.5rem;
+}
+.top img { width: 2.75rem; height: 2.75rem; border-radius: 0.7rem; }
+.top .name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--green);
+  letter-spacing: -0.01em;
+}
+
+/* ── 첫 화면 ── */
+.hero { padding: 2.5rem 0 3rem; }
+.hero .wrap {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+.hero h1 {
+  margin: 0 0 1.25rem;
+  font-size: 2.1rem;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+.hero .brand {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--green);
+}
+.hero .lead {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--muted);
+}
+
+.four {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.four li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 1.1rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+}
+.four strong { display: block; font-size: 1.15rem; }
+.four span.t { display: block; color: var(--muted); }
+
+/* 화면 사진 — 휴대전화 한 장처럼 둥근 테두리 */
+.shot {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 19rem;
+}
+.shot img {
+  border-radius: 1.75rem;
+  border: 6px solid var(--bezel);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.shot figcaption {
+  margin-top: 0.9rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* ── 묶음(홈 화면의 네 묶음과 같은 순서) ── */
+.group { padding: 3.5rem 0; }
+.group.tinted { background: var(--surface); }
+.group h2 {
+  margin: 0 0 2rem;
+  font-size: 1.75rem;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.feature {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  padding: 2rem 0;
+}
+.feature + .feature { border-top: 1px solid var(--line); }
+.group h2 + .feature { padding-top: 0; }  /* 묶음 제목 바로 아래는 여백을 겹치지 않는다 */
+.feature h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 0 0 0.75rem;
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+.feature .summary {
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.points { margin: 0; padding-left: 1.3rem; }
+.points li { margin: 0.55rem 0; }
+.points li::marker { color: var(--green); }
+
+/* 작은 칸(이웃 · 혜택) */
+.cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+.cards li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  border-radius: 1.25rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+}
+.cards strong { display: block; font-size: 1.2rem; margin-bottom: 0.2rem; }
+.cards p { margin: 0; color: var(--muted); }
+
+/* 글자 크기 */
+.textsize .wrap {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+.textsize p { margin: 0; font-size: 1.2rem; }
+.textsize strong { display: block; font-size: 1.35rem; }
+
+/* ── 꼬리 ── */
+.foot {
+  padding: 2.25rem 0 3.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+.foot p { margin: 0.4rem 0; }
+.nb { white-space: nowrap; }  /* 「ⓒ」와 기관 이름이 줄 끝에서 갈리지 않게 */
+
+/* ── 넓은 화면 ── */
+@media (min-width: 720px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 960px) {
+  .hero { padding: 4rem 0 4.5rem; }
+  .hero .wrap { grid-template-columns: 1.15fr 0.85fr; gap: 4rem; }
+  .hero h1 { font-size: 2.75rem; }
+
+  .feature { grid-template-columns: 1.1fr 0.9fr; gap: 4rem; padding: 2.5rem 0; align-items: start; }
+  .feature > div { padding-top: 1.5rem; }
+  .feature.text-only > div { padding-top: 0; }
+  /* 사진이 번갈아 왼쪽·오른쪽에 선다 */
+  .feature.flip .shot { order: -1; }
+  .feature.text-only { grid-template-columns: 1fr; }
+  .feature.text-only .points { columns: 2; column-gap: 3rem; }
+  .feature.text-only .points li { break-inside: avoid; }
+
+  .cards.three { grid-template-columns: repeat(3, 1fr); }
+  .cards.four-col { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media print {
+  .shot img { box-shadow: none; }
+}
