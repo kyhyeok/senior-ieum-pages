@@ -14,7 +14,7 @@
   --bezel: #111111;
   --shadow: 0 2.5rem 4rem -1.75rem rgba(17, 17, 17, 0.3);
   --shot-filter: none;
-  --map-bg: #eceef0;
+  --map-bg: #ededed;
   --map-road: #ffffff;
   --gutter: 1.5rem;
   --max: 72rem;
@@ -32,8 +32,8 @@
     --bezel: #2e2e2e;
     --shadow: 0 2.5rem 4rem -1.75rem rgba(0, 0, 0, 0.7);
     --shot-filter: brightness(0.88);  /* 앱 화면은 밝은 판뿐이라 어두운 바탕에서 눈부시지 않게 */
-    --map-bg: #1f2022;
-    --map-road: #303236;
+    --map-bg: #202020;
+    --map-road: #313131;
   }
 }
 
@@ -152,8 +152,8 @@ img { display: block; max-width: 100%; height: auto; }
   color: var(--muted);
 }
 
-/* 내 주변 — 직접 그린 지도 그림. 바탕·길은 무채색, 공원·핀·반경은 강조색 하나를 옅고 진하게만 쓴다.
-   낱말은 SVG 글자가 아니라 HTML이다 — 18px 기준과 기기 글자 크기 설정을 그대로 따르게. */
+/* 내 주변 — 직접 그린 지도 그림. 바탕·길은 순회색, 공원·내 위치·핀은 강조색 하나를 옅고 진하게만 쓴다.
+   그림 안에는 글자를 두지 않는다 — 좁은 폭·큰 글자 설정에서 겹치거나 잘리지 않게(종류 이름은 위 문장에 있다). */
 .map {
   position: relative;
   width: 100%;
@@ -170,26 +170,9 @@ img { display: block; max-width: 100%; height: auto; }
 .m-road path { fill: none; stroke: var(--map-road); stroke-width: 16; stroke-linecap: round; }
 .m-road .m-wide { stroke-width: 22; }
 .m-road .m-lane { stroke-width: 7; }
-.m-reach { fill: var(--accent); fill-opacity: 0.05; stroke: var(--accent); stroke-opacity: 0.45; stroke-width: 1.5; stroke-dasharray: 5 6; }
 .m-halo { fill: var(--accent); fill-opacity: 0.16; }
 .m-me { fill: var(--accent); stroke: var(--paper); stroke-width: 4; }
 .m-pin { fill: var(--accent); stroke: var(--paper); stroke-width: 3.5; }
-.m-label {
-  position: absolute;
-  transform: translate(-50%, calc(-100% - 0.7rem));   /* 핀 바로 위에 선다 */
-  padding: 0.2rem 0.75rem;
-  border-radius: 999px;
-  background: var(--paper);
-  color: var(--ink);
-  font-weight: 700;
-  white-space: nowrap;
-  box-shadow: 0 0.35rem 1rem rgba(17, 17, 17, 0.12);
-}
-.m-label-me {
-  transform: translate(-50%, 0.9rem);   /* 내 위치는 점 아래에 */
-  background: var(--accent);
-  color: var(--paper);
-}
 
 /* ── 글자 크기 — 앱의 세 단계(기본 1.0 · 중간 1.5 · 크게 2.0)를 실제 글자로 ── */
 .stage { padding: var(--section) 0; text-align: center; }
